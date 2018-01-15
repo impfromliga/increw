@@ -21,6 +21,7 @@ onload = app.init = function(){
 	app.lastY = 0;
 	content.onscroll = function(){
 		console.log('scroll',cntScroll++);
+		app.lastY = content.scrollTop;
 	}
 	var cnv = document.querySelector('canvas');
 	cnv.width = cnv.height = Math.min(innerWidth, innerHeight);
