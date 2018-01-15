@@ -53,7 +53,7 @@ app.movId = function(target, interval, ease){
 	if(typeof target != 'number' ){
 		idx = 'getAttribute' in this ? this.getAttribute('data-swipe') : 0;
 		console.log('swipe',idx)
-		idx = (app.curId() + +idx -.9999*(idx>>31) ).toFixed(1)|0;
+		idx = (app.curId() + +idx -.9999*(idx>>31) ).toFixed(4)|0;
 		console.log(idx);
 		target = app.scn[(idx + app.scn.length) % app.scn.length].pos;
 	}else target = app.scn[target|0].pos + (target%1) * innerHeight; //* app.scn[target|0].h;
