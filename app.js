@@ -18,9 +18,9 @@ document.addEventListener("fullscreenerror", function( event ) {
 var cntScroll = 0;
 onload = app.init = function(){
 	console.log('load',cntScroll++);
+	app.lastY = 0;
 	content.onscroll = function(){
 		console.log('scroll',cntScroll++);
-		app.lastY = content.scrollTop;
 	}
 	var cnv = document.querySelector('canvas');
 	cnv.width = cnv.height = Math.min(innerWidth, innerHeight);
@@ -53,7 +53,7 @@ app.movId = function(target, interval, ease){
 		idx = 'getAttribute' in this ? this.getAttribute('data-swipe') : 0;
 		console.log('swipe',idx)
 		idx = app.curId() + +idx -.999*(idx>>31) | 0;
-		console.log(idx)
+		console.log(idx);
 		target = app.scn[(idx + app.scn.length) % app.scn.length].pos;
 	}else target = app.scn[target|0].pos + (target%1) * innerHeight; //* app.scn[target|0].h;
 	var delta = target - content.scrollTop;
