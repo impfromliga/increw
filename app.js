@@ -51,9 +51,9 @@ app.movId = function(target, interval, ease){
 	interval = interval || 750;
 	ease = ease || function easeInOut(x){return (1.911882804-1.8257148*Math.abs(x-=.5))*x+.5;};
 	if(typeof target != 'number' ){
-		idx = 'getAttribute' in this ? this.getAttribute('data-swipe') : 0;
+		idx = 'getAttribute' in this ? this.getAttribute('data-swipe')|0 : 0;
 		console.log('swipe',idx)
-		idx = (app.curId()+.5 + +idx|0);
+		idx = app.curId() +idx -.99*(idx>>31)|0;
 		console.log(idx);
 		target = app.scn[(idx + app.scn.length) % app.scn.length].pos;
 	}else target = app.scn[target|0].pos + (target%1) * innerHeight; //* app.scn[target|0].h;
